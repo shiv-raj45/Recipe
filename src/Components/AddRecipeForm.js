@@ -4,6 +4,7 @@ import Ingredients from './Ingredients';
 import '../Css/AddRecipeForm.css'
 import Methods from './Methods';
 import { DeleteOutlined } from '@material-ui/icons';
+import baseURL from '../utils/utils';
 function AddRecipeForm() {
   const [dishname, setDishname] = useState('');
   const [ingredientData, setIngredientData] = useState({ name: '', quantity: '', unit: '' })
@@ -42,7 +43,7 @@ setMethods([])
       time,
       portion
     }
-    axios.post('http://localhost:4000/recipes', formdata).then((response) => {
+    axios.post(`${baseURL}/recipes`, formdata).then((response) => {
       console.log(response);
     })
   }

@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import '../Css/Login.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { authenticate, getUserDetails } from '../Features/userSlice'
+import baseURL from '../utils/utils'
 function Login() {
     const [formerror, setFormerror] = useState("")
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const [data, setdata] = useState({
         email: '',
         password: ''
@@ -46,7 +48,7 @@ function Login() {
         }
     }
     const postLoginForm = async (userInfo) => {
-        const { data } = await axios.post('http://localhost:4000/login', userInfo);
+        const { data } = await axios.post(`${baseURL}/login`, userInfo);
         if (data.error) { setFormerror(data.error) }
         else {
             await localStorage.setItem("accessToken", data.token);

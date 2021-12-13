@@ -4,12 +4,12 @@ const {v4:uuid4}=require('uuid')
 
 const bcrypt=require('bcrypt');
 const { default: axios } = require('axios');
-const { response } = require('express');
+const { default: URL } = require('./utils');
 
 
 const checkIfUserAlreadyExists = (req, res, next) => {
    const email= req.body.email;
-   axios.get(`http://localhost:5000/users`).then((response)=>{
+   axios.get(`${URL}/users`).then((response)=>{
        const users=response.data;
 
              
@@ -28,7 +28,7 @@ const signup=async(req,res)=>{
    const hashedPassword=await bcrypt.hash(password,10);
 const user={firstName,lastName,email,hashedPassword};
 console.log(user);
-   axios.post('http://localhost:5000/users',{"id":`${uuid4()}`, "user":user}).then(()=>{
+   axios.post(`${URL}/users`,{"id":`${uuid4()}`, "user":user}).then(()=>{
        console.log('insertion successful');
    })
 

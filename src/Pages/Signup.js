@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 import "../Css/Signup.css";
+import baseURL from "../utils/utils";
 function SignupForm() {
   const  navigate=useNavigate()
   const [errors, setErrors] = useState();
@@ -16,7 +17,7 @@ function SignupForm() {
   });
 
   const postForm = async (info) => {
-    const { data } = await axios.post("http://localhost:4000/signup", info);
+    const { data } = await axios.post(`${baseURL}/signup`, info);
    await setResponse(data)
    console.log(data);
   await data.success && navigate("/login")

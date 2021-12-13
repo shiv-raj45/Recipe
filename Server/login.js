@@ -3,12 +3,13 @@ const router = express.Router();
 const jwt=require('jsonwebtoken')
 const bcrypt = require("bcrypt");
 const { default: axios } = require('axios');
+const { default: URL } = require('./utils');
 const validateLogin = async (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) {
         return res.json({ error: 'fill the field' });
     }
-    axios.get('http://localhost:5000/users').then((response) => {
+    axios.get(`${URL}/users`).then((response) => {
         const userInDatabase = response.data;
         const userWithInputEmail = userInDatabase.filter((user) => user.user.email === email);
         if (userWithInputEmail.length === 0) {
