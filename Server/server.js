@@ -19,6 +19,6 @@ app.use('/login',login)
 app.use('/search',search)
 
 
-app.listen(process.env.PORT||4000, () => {
+app.listen(4000, () => {
     console.log(`Everything is happening on http://localhost:4000`);
 })

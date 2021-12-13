@@ -9,7 +9,7 @@ const validateLogin = async (req, res, next) => {
     if (!email || !password) {
         return res.json({ error: 'fill the field' });
     }
-    axios.get(`${URL}/users`).then((response) => {
+    axios.get(`http://localhost:5000/users`).then((response) => {
         const userInDatabase = response.data;
         const userWithInputEmail = userInDatabase.filter((user) => user.user.email === email);
         if (userWithInputEmail.length === 0) {
