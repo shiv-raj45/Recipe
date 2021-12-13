@@ -38,7 +38,7 @@ else{
         <div className="single_item">
             <img className="product_img" src={product.recipe.imgUrl} alt="product_image" />
             <div className="product_name">
-            <Link to={`recipeDetails/${product.id}`}> {product.recipe.dishname}</Link>
+            <Link to={`recipeDetails/${product.id}`}style={{textDecoration:'none',color:'red'}} > {product.recipe.dishname}</Link>
             </div>
             <div className="product_info">
                 <div className="wrapper">    

@@ -1,17 +1,23 @@
 import React from "react";
 
 import '../Css/Header.css'
-import { Add, AddAPhotoTwoTone, ExitToApp, FavoriteBorderOutlined, FormatColorFillOutlined, HomeOutlined, NotesOutlined, PersonOutlined, SearchRounded, ShoppingCartOutlined } from "@material-ui/icons";
-import  { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
-import useLocalStorge from '../useLocalStorage'
-
+import { Add, ExitToApp, FavoriteBorderOutlined, FormatColorFillOutlined, HomeOutlined, NotesOutlined, PersonOutlined, SearchRounded, ShoppingCartOutlined, SpaRounded } from "@material-ui/icons";
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink,useNavigate } from 'react-router-dom'
+import { userLogout } from "../Features/cartSlice";
+import { authenticate } from "../Features/userSlice";
 function Header() {
+  const dispatch=useDispatch()
     const theme = useSelector(state => state.recipes.lightTheme)
     const cart=useSelector((state)=>state.cart.cart)
-  const auth=useSelector((state)=>state.user.auth)
-    
+  const auth=useSelector((state)=>state.user.auth);
+  const navigate=useNavigate()
+const logOut=()=>{
+dispatch(userLogout());
+dispatch(authenticate(false))
+localStorage.removeItem("accessToken");
+navigate('/login')
+}    
   //className="header_link" activeClassName="nav_active"
     return (
     <div className="header" style={{ background: theme ? 'white' : 'wheat' }}>
@@ -48,10 +54,9 @@ function Header() {
               </NavLink>
             </>
           ) : (
-            <NavLink className="header_link" onClick={()=>localStorage.removeItem("accessToken")} activeClassName="nav_active" to="/login">
+            <span className="header_link" onClick={logOut} activeClassName="nav_active" >
               <span className="link_title">Logout </span>  <ExitToApp />
-
-            </NavLink>
+            </span>
           )}
         </div>
       </nav>

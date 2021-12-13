@@ -24,6 +24,7 @@ function Login() {
 /* validating form finishes */
 
     const handleChange = (e) => {
+
         const { name, value } = e.target;
         setdata({ ...data, [name]: value })  //the name attribute of text element and name of state is kept same and 
         //state is manipulated accordingly
@@ -33,6 +34,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         setFormerror(validate(data)); //if there is error in form don't submit the form show errors
         if (validate(data)) {
             setFormerror(validate(data))   //form will be submitted only if theform is validated
@@ -44,20 +46,18 @@ function Login() {
         }
     }
     const postLoginForm = async (userInfo) => {
-        
         const { data } = await axios.post('http://localhost:4000/login', userInfo);
         if (data.error) { setFormerror(data.error) }
         else {
             await localStorage.setItem("accessToken", data.token);
            await  dispatch(authenticate(true));
-           await  dispatch(getUserDetails(data))
             navigate('/')
         }
     }
     return (
         <div className="login">
             <span className="login_title"> Login!!!</span>
- {/* form start here */}
+ {/* form starts here */}
             <form onSubmit={handleSubmit} className="loginForm">
                 {formerror && <>  <span className="login_error" >  {formerror}</span></>}
 
@@ -84,7 +84,7 @@ function Login() {
 
                 />
 
-                <button type="button" className="loginSubmit" > log in</button>
+                <button type="submit" className="loginSubmit" > log in</button>
 {/* signin button */}
                 <div className="signin_wrapper">Don't have an account?
                     <button className="signin_button" onClick={() => navigate('/signup')}>Sign up</button>

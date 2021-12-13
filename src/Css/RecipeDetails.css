@@ -1,0 +1,12 @@
+.recipe_details{
+    min-height:80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dish_container{
+    display: flex;
+}
+.details_wrapper{
+    display: flex;
+}
