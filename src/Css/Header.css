@@ -13,7 +13,7 @@
     padding: 0;
   }
   ::-webkit-scrollbar {
-    width: 0.6rem;
+    width: 0.2rem;
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--appColor);

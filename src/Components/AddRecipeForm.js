@@ -32,8 +32,10 @@ function AddRecipeForm() {
     e.preventDefault();
     setDishname('');
     setImgUrl('');
-setIngredients([]);
-setMethods([])
+    setIngredients([]);
+    setMethods([]);
+    setTime('');
+    setPortion('')
 
     const formdata = {
       dishname,
@@ -97,21 +99,30 @@ setMethods([])
           <select
             onClick={handleChange} name="unit"
           >
+            <option name="unit" value="none"
+            >none </option>
 
-            <option name="unit" value="gram" onClick={handleChange}
+            <option name="unit" value="gm" onClick={handleChange}
             >gram </option>
             <option value="kg" name="unit" onClick={handleChange}
             >KG </option>
-            <option value="mL" onClick={handleChange}
+            <option value="ml" onClick={handleChange}
               name="unit" >milliliter </option>
 
             <option value="l" onClick={handleChange}
               name="unit">liter </option>
-            <option value="tea spoon" onClick={handleChange}
+            <option value="tea-spoon" onClick={handleChange}
               name="unit" >tea spoon </option>
-            <option value="table spoon" onClick={handleChange}
+            <option value="table-spoon" onClick={handleChange}
               name="unit">table spoon </option>
 
+            <option value="piece" onClick={handleChange}
+              name="unit">piece </option>
+
+            <option value="slice" onClick={handleChange}
+              name="unit">slice </option>
+<option value="cup" onClick={handleChange}
+              name="unit">cup </option>
 
           </select>
 
@@ -145,20 +156,20 @@ setMethods([])
         <button type="submit" disabled={buttonDisable} className="recipe_submit_button" >Submit</button>
       </form>
       <div className="info_container">
-      <div className="ingredient_container">
-<span className="ingredient_text">Ingredients</span>
-        {ingredients.map((ingredient, index) => (
-          <div className="ingredient_wrapper" key={index}>
-            {index+1}
-            <Ingredients ingredient={ingredient} />
-            <button  className="ingredient_delete"onClick={() => deleteIngredient(index)} ><DeleteOutlined/> </button>
-          </div>))}
+        <div className="ingredient_container">
+          <span className="ingredient_text">Ingredients</span>
+          {ingredients.map((ingredient, index) => (
+            <div className="ingredient_wrapper" key={index}>
+              {index + 1}
+              <Ingredients ingredient={ingredient} />
+              <button className="ingredient_delete" onClick={() => deleteIngredient(index)} ><DeleteOutlined /> </button>
+            </div>))}
+        </div>
+
+        <div className="mehods_display">
+          Directions
+          {methods.map((method, index) => (<div key={index}><Methods method={method} step={index + 1} /> </div>))} </div>
       </div>
-    
-      <div className="mehods_display">
-        Directions
-         {methods.map((method, index) => (<div key={index}><Methods method={method} step={index+1}/> </div>))} </div>
-         </div>
     </div>
   )
 }

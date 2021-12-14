@@ -1,7 +1,7 @@
 import React from "react";
 
 import '../Css/Header.css'
-import { Add, ExitToApp, FavoriteBorderOutlined, FormatColorFillOutlined, HomeOutlined, NotesOutlined, PersonOutlined, SearchRounded, ShoppingCartOutlined, SpaRounded } from "@material-ui/icons";
+import { Add, ExitToApp, HomeOutlined, NotesOutlined, PersonOutlined, SearchRounded, ShoppingCartOutlined } from "@material-ui/icons";
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink,useNavigate } from 'react-router-dom'
 import { userLogout } from "../Features/cartSlice";
@@ -54,7 +54,7 @@ navigate('/login')
               </NavLink>
             </>
           ) : (
-            <span className="header_link" onClick={logOut} activeClassName="nav_active" >
+            <span className="header_link" onClick={logOut} >
               <span className="link_title">Logout </span>  <ExitToApp />
             </span>
           )}

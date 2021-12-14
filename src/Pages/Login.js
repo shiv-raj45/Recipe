@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import '../Css/Login.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { authenticate, getUserDetails } from '../Features/userSlice'
+import { useDispatch } from 'react-redux'
+import { authenticate } from '../Features/userSlice'
 import baseURL from '../utils/utils'
 function Login() {
     const [formerror, setFormerror] = useState("")

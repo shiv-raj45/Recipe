@@ -7,6 +7,7 @@ height: 100%;
 min-height: 18rem;
 margin: 1rem;
 border-radius: 0px;
+cursor: pointer;
 background: linear-gradient(315deg, #d4d4d4, #fbfbfb);
 box-shadow:  -11px -11px 22px #bebebe,
              11px 11px 22px #ffffff;

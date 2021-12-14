@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import '../Css/SingleItem.css'
 import { addToCart, removeFromCart } from '../Features/cartSlice';
 function SingleItem({ product, onlyRemoveButton }) {
@@ -38,7 +38,7 @@ else{
         <div className="single_item">
             <img className="product_img" src={product.recipe.imgUrl} alt="product_image" />
             <div className="product_name">
-            <Link to={`recipeDetails/${product.id}`}style={{textDecoration:'none',color:'red'}} > {product.recipe.dishname}</Link>
+            <span  onClick={()=>navigate(`/recipeDetails/${product.id}`)} style={{textDecoration:'none',color:'red'}} > {product.recipe.dishname}</span>
             </div>
             <div className="product_info">
                 <div className="wrapper">    

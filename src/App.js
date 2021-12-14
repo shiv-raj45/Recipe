@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes,Route,Switch } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import Header from './Components/Header';
 import ToggleTheme from './Components/ToggleTheme';
 import'./Css/App.css'
@@ -16,7 +16,6 @@ import SignupForm from './Pages/Signup';
 function App() {
 
   const theme=useSelector(state=>state.recipes.lightTheme);
-  console.log(theme);
 const dispatch=useDispatch()
 useEffect(()=>{
 const token=localStorage.getItem("accessToken");
